@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AddService WSDL service -->
+
+  <service name="Add" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Addition"/>
+      <parameter name="wsdlServiceElement" value="AddService"/>
+      <parameter name="schemaQualified" value="http://Addition"/>
+      <parameter name="wsdlServicePort" value="Add"/>
+      <parameter name="className" value="Addition.Add"/>
+      <parameter name="wsdlPortType" value="Add"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Addition" name="ADD" qname="operNS:ADD" soapAction="">
+        <parameter xmlns:pns="http://Addition" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:a" type="tns:int"/>
+        <parameter xmlns:pns="http://Addition" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:b" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="ADD"/>
+
+  </service>
+</deployment>
